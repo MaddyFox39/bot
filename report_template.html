@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Отчет Hab Hub</title>
+    <style>
+    body  {
+        font-family:  'DejaVuSans',  sans-serif;
+    }
+</style>
+</head>
+<body>
+    <h1>Статистика за неделю</h1>
+    <img src="{{ chart_path }}" alt="Общий график">
+
+    <h2>Информация о пользователе</h2>
+    <p>Имя: {{ user.name }}</p>
+    <p>Уровень: {{ user.level }}</p>
+    <p>Часовой пояс: {{ user.timezone }}</p>
+
+    <h2>Период отчета</h2>
+    <p>{{ start_date }} - {{ end_date }}</p>
+
+    <h2>Привычки</h2>
+    <ul>
+        {% for habit in habits %}
+            <li>{{ habit.name }}:</li>
+            <ul>
+                {% for entry in habit.entries %}
+                    <li>{{ entry.date }} - {{ entry.value }}</li>
+                {% endfor %}
+            </ul>
+        {% endfor %}
+    </ul>
+</body>
+</html>
